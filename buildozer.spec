@@ -1,5 +1,6 @@
 [app]
-
+source.dir = .
+version = 0.1
 title = My Python App
 package.name = mypythonapp
 package.domain = org.test
