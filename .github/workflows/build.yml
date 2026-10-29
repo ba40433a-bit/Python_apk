@@ -45,12 +45,16 @@ jobs:
           pip install --upgrade pip
           pip install Cython==0.29.36 buildozer
 
-      - name: Clean Build Environment
+      - name: Hard Clean Build Environment
         run: |
-          buildozer clean || true
+          rm -rf ~/.buildozer
+          rm -rf .buildozer
+          find . -name ".buildozer" -type d -exec rm -rf {} + || true
 
       - name: Build APK with Buildozer
         run: |
+          export P4A_ANDROID_API=33
+          export P4A_NDK_API=21
           buildozer -v android debug
 
       - name: Upload APK
